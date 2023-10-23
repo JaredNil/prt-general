@@ -39,7 +39,7 @@ const Pets = () => {
                     </div>
                 </div>
 
-                {false &&
+                {true &&
                     ( <>
                     <div className="pets__category">Next</div>
 
