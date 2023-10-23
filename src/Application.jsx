@@ -11,6 +11,7 @@ import { ApplicationContext } from './store/context.ts';
 // import Footer from './components/footer/Footer';
 
 import { RouterProvider } from 'react-router-dom';
+import Background from './components/background/Background.jsx';
 
 
 
@@ -24,6 +25,7 @@ const Application = () => {
 		<ApplicationContext.Provider value={{ isMobile, widthViewport, scrollViewport }}>
 
 			<div className="application" >
+				<Background/>
 				{/* <Header /> */}
 				<Outlet />
 				{/* <Footer /> */}
