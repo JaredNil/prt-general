@@ -18,10 +18,10 @@ const Pets = () => {
                 <div className="pets__category">React</div>
 
                 <div className="pets__item">
-                    <div className="item__label"><span>●</span> label</div>
+                    <div className="item__label"><span>●</span> Проект облачного хранилища</div>
                     <div className="item__text">
-                        <div className="item__text-title">Project №1</div>
-                        <div className="item__text-skill">TS, Redux</div>
+                        <div className="item__text-title">frontend project</div>
+                        <div className="item__text-skill">TS, React, Redux, Express</div>
                     </div>
                     <div className="item__link">
                         {/* <Link to={'/'} className='item__link-btn'>GH</Link> */}
