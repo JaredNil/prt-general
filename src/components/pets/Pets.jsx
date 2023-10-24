@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
+import uuid from 'react-uuid'
+
+import {PiArrowLineDownRightBold} from 'react-icons/pi'
 
 import './pets.scss'
-import { useState } from 'react'
+
+
+
 
 const petsData = [
     {
@@ -80,39 +85,41 @@ const Pets = ({contentHidden}) => {
 
 
     return (
-        <div className={`pets__content ${contentHidden ? '_hide' : '' }`} >
+        <div
+            className={`pets__content ${contentHidden ? '_hide' : '' }`} 
+        >
             {
                 petsData.map((category, index) => (
-                    <div className='pets__chapter'>
-                        <div className="category">{category.category}</div>
+                    <div className='pets__chapter' key={uuid()}>
+                        <div className="category">
+                            {category.category}
+                            <PiArrowLineDownRightBold size={20}/>
+                        </div>
                         {
                             category.items.map(item => (
 
-                                <div className="pet">
+                                <div className="pet" key={uuid()}>
 
                                     <div className="pet__title">{item.name}</div>
                                     <div className="pet__skills">
                                         <div className="pet__skills-title">Технологии: </div>
                                         <div className="pet__skills-map">
                                             {item.skills.map((t, j, skills) => (
-                                                <>
-                                                    <span>
+
+                                                    <span key={uuid()}>
                                                         {` ${t}`}
+                                                        {`${(skills.length === j + 1) ? '' : ', '}`}
                                                     </span>
-                                                    {`${(skills.length === j + 1) ? '' : ', '}`}
-                                                </>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="pet__links">
                                         {
                                             Object.entries(item.links).map((link, j, arr) => (
-                                                <>
-                                                    <Link to={link[1]}>
+                                                    <Link to={link[1]} key={uuid()}>
                                                         {`${link[0]}`}
+                                                        {`${(arr.length === j + 1) ? '' : ', '}`}
                                                     </Link>
-                                                    {`${(arr.length === j + 1) ? '' : ', '}`}
-                                                </>
                                             ))
 
 

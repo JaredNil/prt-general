@@ -1,34 +1,54 @@
-@use '../../utils/var.scss' as var;
+@use "../../utils/var.scss" as var;
 
-
-
-.pets__content{
+.pets__content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    transition: all 0.1s ease 0s;
+    transition: opacity 0.08s ease 0s;
 
-    &._hide{
-        transform: scale(0);
+    &._hide {
         position: absolute;
+        top: 34px;
+        opacity: 0;
+        transform: scale(0);
+        pointer-events: none;
+        user-select: none;
     }
 }
-.pets__category{
-    font-size: 24px;
-    font-weight: 600;
-    margin: 8px auto;
+
+.pets__chapter {
+    margin: 10px 0;
+    padding: 0 5px;
+    width: 100%;
+    background-color: var.$gen2;
+    border-radius: 12px;
 }
-.pet{
-    margin: 0px 0px 10px 0px;
+
+.category {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 16px auto 2px auto;
+
+    display: flex;
+    align-items: center;
+
+    user-select: none;
+    pointer-events: none;
+    svg {
+        margin-left: 4px;
+    }
+}
+.pet {
+    margin: 6px 0px 10px 0px;
     padding: 8px 4px;
     border-radius: 10px;
     width: 100%;
 
-    
-    background-color: var.$gen2;
-    &:hover{
-        background-color: var.$gen3;
+    background-color: var.$gen3;
+    &:hover {
+        background-color: #000;
     }
     transition: all 0.4s ease 0s;
 
@@ -36,25 +56,45 @@
     flex-direction: column;
     align-items: flex-start;
     transition: all 0.1s ease 0s;
-    .pet__title{
-        
-        span{
-            font-size: 20px;
-            font-weight: 800;
-            padding-bottom: 4px;
+    .pet__title {
+        font-size: 22px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        padding-bottom: 12px;
+
+        cursor: pointer;
+
+        user-select: none;
+    }
+    .pet__skills {
+        width: 100%;
+        padding-left: 30px;
+
+        display: flex;
+        justify-content: space-between;
+        .pet__skills-title {
+            font-weight: 100;
+            font-size: 14px;
+        }
+        .pet__skills-map {
+            text-wrap: nowrap;
+            span{
+                font-weight: 100;
+                line-height: 30px;
+                cursor: copy;
+
+                user-select: none;
+
+                transition: all 0.1s ease 0s;
+                &:hover{
+                    color: red;
+                }
+            }
         }
     }
-    .pet__skills{
-        display: flex;
+    .pet__links{
         width: 100%;
-    
-        justify-content: space-between;
-        .item__text-title{
-            font-weight: 900;
-        }
-        .item__text-skill{
-            font-weight: 100;
-            line-height: 30px;
-        }
+        display: flex;
+        justify-content: flex-end;
     }
 }

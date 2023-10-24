@@ -9,8 +9,7 @@
         flex: 1 1 auto;
     }
     .sidebar{
-        flex: 0 0 20%;
-		flex-basis: 20%;
+        flex: 0 0 320px;
     }
 
 	// transition: all 0.3s ease 0s;
@@ -46,6 +45,7 @@
 			overflow: hidden;
 			
 			.box{
+				height: 700px;
 				margin: 0px 15px 20px 15px;
 				padding: 20px;
 				background-color: var.$gen;
@@ -113,9 +113,11 @@
 		padding-right: 35px;
         display: flex;
         justify-content: flex-start;
-        align-items: start;
+        align-items: flex-start;
 
 		transition: transform 0.1s ease 0s;
+
+		pointer-events: none;
         span{
             font-size: 24px;
             line-height: 26px;
@@ -124,9 +126,12 @@
             letter-spacing: 1.2px;
             text-decoration: underline;
             text-wrap: nowrap;
+
+			pointer-events: visible;
         }
         svg{
             width: 26px;
+			pointer-events: visible;
         }
     }
 
@@ -152,14 +157,17 @@
 
 
 ._hidden{
+	display: flex;
 
 	.sidebar-resize{
 		display: none;
 	}
-	.pets__head{
+	.sidebar-pets{
+		position: absolute;
 	}
 	.pets__head-title{
 		transform-origin: top;
+		opacity: 0;
 		transform: scaleY(0);
 		&._hide{
 			transform: scale(0);
@@ -167,16 +175,93 @@
 			width: 1px;
 		}
 	}
-	.pets__head-expand{
-
-	}
-	.sidebar-pets{
-
-	}
 	.pets__content{
+		opacity: 0;
+		transition: all 0s;
 		transform-origin: right;
-		transform: scaleX(0) translate(300px);
+		transform: scaleX(1) translate(0px);
 	}
 }
 
 
+
+
+.sidebar__button{
+	display: block;
+	position: relative;
+	height: 100%;
+	width: 40px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: transparent;
+
+	pointer-events: none;
+	overflow: hidden;
+
+	.sidebar__button-wrapper{
+
+		position: relative;
+		height:calc(100% - 140px);
+		width: 100%;
+		
+		overflow: hidden;
+
+		pointer-events: visible;
+
+		transform: translateY(0px);
+		.sidebar__button-container{
+			height: 100%;
+			width: 100%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+
+			animation: 8s linear sidebarButton infinite;
+
+			.text{
+				writing-mode: vertical-rl;
+				transform: rotate(180deg);
+				padding-top: 60px;
+	
+				font-size: 26px;
+				font-weight: 400;
+				line-height: 30px;	
+				
+				text-wrap: nowrap;
+				
+			}
+		}
+
+	}
+}
+
+.sidebar__button._hidden{
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	opacity: 0;
+	
+	transition: opacity 0.1s ease 0s;
+	
+	*{
+		pointer-events: none;
+		user-select: none;
+	}
+}
+
+
+@keyframes sidebarButton {
+	0%{
+		transform: translateY(0px);
+	}
+	100%{
+		transform: translateY(-346.05px);
+	}
+}

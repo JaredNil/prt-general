@@ -1,30 +1,22 @@
 
 import { Outlet } from 'react-router-dom';
 
-import useMobile from './hooks/useDevice.ts'
-import useWidthViewport from './hooks/useWidthViewport.ts';
-import useScrollViewport from './hooks/useScrollViewport.ts';
+import useViewport from './hooks/useViewport.js';
 
 import { ApplicationContext } from './store/context.ts';
 
-// import Header from './components/header/Header';
-// import Footer from './components/footer/Footer';
-
-import { RouterProvider } from 'react-router-dom';
 import Background from './components/background/Background.jsx';
-
 
 
 const Application = () => {
 
-	const isMobile = useMobile()
-	const widthViewport = useWidthViewport()
-	const scrollViewport = useScrollViewport()
+	const viewportWidth = useViewport()
+
 
 	return (
-		<ApplicationContext.Provider value={{ isMobile, widthViewport, scrollViewport }}>
+		<ApplicationContext.Provider value={{ viewportWidth }}>
 
-			<div className="application" >
+			<div className="application">
 				<Background/>
 				{/* <Header /> */}
 				<Outlet />
