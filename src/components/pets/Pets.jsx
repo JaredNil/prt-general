@@ -1,122 +1,130 @@
 import { Link } from 'react-router-dom'
 
-import { BsChevronBarRight } from 'react-icons/bs'
-
 import './pets.scss'
+import { useState } from 'react'
 
-const Pets = () => {
-    return (
-        <div className="pets">
-
-            <div className="pets__head">
-                <div className="pets__head-title">Projects:</div>
-                <BsChevronBarRight size={30} />
-            </div>
-
-            <div className="pets__sidebar">
-
-                <div className="pets__category">React</div>
-
-                <div className="pets__item">
-                    <div className="item__label"><span>●</span> Проект облачного хранилища</div>
-                    <div className="item__text">
-                        <div className="item__text-title">frontend project</div>
-                        <div className="item__text-skill">TS, React, Redux, Express</div>
-                    </div>
-                    <div className="item__link">
-                        {/* <Link to={'/'} className='item__link-btn'>GH</Link> */}
-                    </div>
-                </div>
-
-                <div className="pets__item">
-                    <div className="item__label"><span>●</span> label</div>
-                    <div className="item__text">
-                        <div className="item__text-title">Project №2</div>
-                        <div className="item__text-skill">TS, Redux</div>
-                    </div>
-                    <div className="item__link">
-                        {/* <Link to={'/'} className='item__link-btn'>GH</Link> */}
-                    </div>
-                </div>
-
-                {true &&
-                    ( <>
-                    <div className="pets__category">Next</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №3</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-        <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №4</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-    <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-
-<div className="pets__category">MERN</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №3</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-        <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №4</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-        <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-
-<div className="pets__category">Layout {'(Tailwind/SASS)'}</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №3</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-        <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-
-<div className="pets__item">
-    <div className="item__label"><span>●</span> label</div>
-    <div className="item__text">
-        <div className="item__text-title">Project №4</div>
-        <div className="item__text-skill">TS, Redux</div>
-    </div>
-    <div className="item__link">
-        <Link to={'/'} className='item__link-btn'>GH</Link>
-    </div>
-</div>
-                    </>)
+const petsData = [
+    {
+        category: 'React',
+        items: [
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
                 }
+            },
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
+                }
+            },
+        ]
+    },
+    {
+        category: 'React',
+        items: [
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
+                }
+            },
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
+                }
+            },
+        ]
+    },
+    {
+        category: 'React',
+        items: [
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
+                }
+            },
+            {
+                name: 'Проект облачного хранилища',
+                linkComponent: '/',
+                skills: ['TS', 'React', 'Redux', 'Express'],
+                links: {
+                    'GH': '/',
+                    'SYTE': '/'
+                }
+            },
+        ]
+    },
+]
 
-            </div>
 
+const Pets = ({contentHidden}) => {
+
+
+    return (
+        <div className={`pets__content ${contentHidden ? '_hide' : '' }`} >
+            {
+                petsData.map((category, index) => (
+                    <div className='pets__chapter'>
+                        <div className="category">{category.category}</div>
+                        {
+                            category.items.map(item => (
+
+                                <div className="pet">
+
+                                    <div className="pet__title">{item.name}</div>
+                                    <div className="pet__skills">
+                                        <div className="pet__skills-title">Технологии: </div>
+                                        <div className="pet__skills-map">
+                                            {item.skills.map((t, j, skills) => (
+                                                <>
+                                                    <span>
+                                                        {` ${t}`}
+                                                    </span>
+                                                    {`${(skills.length === j + 1) ? '' : ', '}`}
+                                                </>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="pet__links">
+                                        {
+                                            Object.entries(item.links).map((link, j, arr) => (
+                                                <>
+                                                    <Link to={link[1]}>
+                                                        {`${link[0]}`}
+                                                    </Link>
+                                                    {`${(arr.length === j + 1) ? '' : ', '}`}
+                                                </>
+                                            ))
+
+
+                                        }
+                                    </div>
+                                </div>
+
+                            ))
+                        }
+                    </div>
+                ))
+            }
         </div>
     )
 }
