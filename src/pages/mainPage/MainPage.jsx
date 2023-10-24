@@ -63,7 +63,8 @@ function MainPage() {
   const [contentHidden, setContentHidden] = useState(false)
 
   const clickExpandSidebar = (e) => {
-    e.target.classList.toggle('_active')
+
+    document.getElementById('expand-icon').classList.toggle('_active')
 
     setTimeout(() => {
       setContentHidden(!contentHidden)
@@ -111,7 +112,7 @@ function MainPage() {
                   <span>{`Action projects: `}</span>
                   <LuExternalLink size={18} />
                 </Link>
-                <div className="pets__head-expand" onClick={clickExpandSidebar}>
+                <div id='expand-icon' className="pets__head-expand" onClick={clickExpandSidebar}>
                   <BsChevronBarRight size={30} className='' />
                 </div>
               </div>
