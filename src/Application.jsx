@@ -18,9 +18,7 @@ const Application = () => {
 
 			<div className="application">
 				<Background/>
-				{/* <Header /> */}
 				<Outlet />
-				{/* <Footer /> */}
 			</div>
 
 		</ApplicationContext.Provider>

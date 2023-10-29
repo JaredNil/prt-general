@@ -7,3 +7,16 @@ main.wrapper{
         color: rgb(237, 237, 237);
     }
 }
+
+.mainpage{
+    display: flex;
+    height: 100%;
+
+	
+    .content{
+        flex: 1 1 auto;
+    }
+    .sidebar{
+        flex: 0 0 320px;
+    }
+}

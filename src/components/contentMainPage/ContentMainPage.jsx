@@ -1,9 +1,7 @@
 
-
-
-const Content = () => {
+const ContentMainPage = ({contentRef}) => {
     return (
-        <>
+        <div className="content" ref={contentRef}>
             <div className="content__container">
 
                 <div className="content__box">
@@ -31,8 +29,8 @@ const Content = () => {
                 </div>
 
             </div>
-        </>
+        </div>
     )
 }
 
-export default Content
+export default ContentMainPage

@@ -1,0 +1,43 @@
+
+@use '../../utils/var.scss' as var;
+
+
+
+.content{
+    height: 100%;
+	width: calc(100% + 45px);
+	position: relative;
+	overflow-y: scroll;
+
+	scrollbar-width:45px;
+	&::-webkit-scrollbar {
+		background-color: var.$scrollbarbg;
+		width: 45px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: var.$scrollbarthumb;
+	}
+	.content__container{
+		position: relative;
+		height: 200%;
+		width: 100%;
+		overflow-x: hidden;
+
+		display: flex;
+		flex-direction: column;
+		.content__box{
+			position: relative;
+			width: 100%;
+			overflow: hidden;
+			
+			.box{
+				height: 700px;
+				margin: 0px 15px 20px 15px;
+				padding: 20px;
+				background-color: var.$gen;
+				border-radius: 0px 0px 20px 20px;
+			}
+		}
+
+	}
+}

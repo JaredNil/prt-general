@@ -4,8 +4,9 @@ import { createBrowserRouter } from "react-router-dom";
 import Application from './../Application';
 
 import MainPage from './../pages/mainPage/MainPage';
-import ProjectPage from './../pages/ProjectPage';
+
 import ErrorPage from './../pages/ErrorPage';
+import ProjectPage from "../pages/projectPage/ProjectPage";
 
 
 

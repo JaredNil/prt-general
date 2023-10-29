@@ -1,8 +1,6 @@
 
 import './Background.scss'
 
-
-
 const Background = () => {
     return (
         <div className="background__wrapper">
