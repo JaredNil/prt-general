@@ -19,7 +19,10 @@ const Return = () => {
                                         : ''
                                     }
                                     </span>
-                                    <Link className={`pieceOfFish ${(index === (arr.length-1) ? 'last_lnk' : '')}`}>
+                                    <Link className={
+                                        `pieceOfFish 
+                                        ${(index === (arr.length-1) ? 'last_lnk' : '')}
+                                        `}>
                                         {lnk}
                                     </Link>
                                 </>
