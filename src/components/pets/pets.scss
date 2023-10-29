@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
 
-    transition: opacity 0.08s ease 0s;
+    transition: opacity 0.1s ease 0s;
 
     &._hide {
         position: absolute;
@@ -19,66 +19,135 @@
 }
 
 .pets__chapter {
-    margin: 10px 0;
-    padding: 0 5px;
     width: 100%;
-    background-color: var.$gen2;
-    border-radius: 12px;
+    margin: 16px 0;
 }
 
 .category {
-    font-size: 24px;
-    font-weight: 400;
-    margin: 16px auto 2px auto;
+    position: relative;
+    padding: 7px 36px;
+    border-radius: 8px;
+    background-color: var.$titlePetsCategory;
 
     display: flex;
     align-items: center;
 
     user-select: none;
-    pointer-events: none;
+    cursor: pointer;
+    span {
+        font-size: 24px;
+        font-weight: 400;
+    }
     svg {
         margin-left: 4px;
     }
+
+    .category-circle {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: solid 2px white;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var.$line;
+            transition: all 0.3s ease 0s;
+
+        }
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        left: 19px;
+        top: 50%;
+        width: 2px;
+        height: 50%;
+        border-radius: 50%;
+        background-color: var.$line;
+    }
+    &:hover{
+        .category-circle::after {
+            top: 33%;
+            transform: scale(2);
+        }
+    }
 }
 .pet {
-    margin: 6px 0px 10px 0px;
-    padding: 8px 4px;
-    border-radius: 10px;
+    position: relative;
     width: 100%;
 
-    background-color: var.$gen3;
-    &:hover {
-        background-color: #000;
+    &::after {
+        content: "";
+        position: absolute;
+        left: 19px;
+        top: 0;
+        width: 2px;
+        height: 100%;
+        border-radius: 50%;
+        background-color: var.$line;
     }
-    transition: all 0.4s ease 0s;
+    &:last-child {
+        &::after {
+            height: 88%;
+        }
+    }
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     transition: all 0.1s ease 0s;
     .pet__title {
+        position: relative;
+        margin-top: 13px;
+        padding: 5px 0 5px 36px;
+ 
+
         font-size: 22px;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 0.3px;
-        padding-bottom: 12px;
 
         cursor: pointer;
 
         user-select: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var.$line;
+        }
     }
     .pet__skills {
+        position: relative;
         width: 100%;
-        padding-left: 30px;
+        padding: 2px 0 2px 42px;
+
+        background-color: var.$gen2;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
 
         display: flex;
-        justify-content: space-between;
-        .pet__skills-title {
-            font-weight: 100;
-            font-size: 14px;
-        }
+        justify-content: flex-start;
         .pet__skills-map {
             text-wrap: nowrap;
-            span{
+            span {
                 font-weight: 100;
                 line-height: 30px;
                 cursor: copy;
@@ -86,15 +155,64 @@
                 user-select: none;
 
                 transition: all 0.1s ease 0s;
-                &:hover{
+                &:hover {
                     color: red;
                 }
             }
         }
+        &::after{
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: calc(50% - 1px);
+            width: 14px;
+            height: 2px;
+            border-radius: 50%;
+            background-color: white;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: solid 2px var.$line;
+        }
     }
-    .pet__links{
+    .pet__links {
+        position: relative;
         width: 100%;
+        padding: 2px 0 6px 42px;
+
+        background-color: var.$gen2;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        &::after{
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: calc(50% - 1px);
+            width: 14px;
+            height: 2px;
+            border-radius: 50%;
+            background-color: var.$line;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: solid 2px var.$line;
+        }
     }
 }

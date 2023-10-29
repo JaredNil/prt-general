@@ -7,11 +7,14 @@ import Pets from "../pets/Pets";
 import { BsChevronBarRight } from "react-icons/bs";
 import { LuExternalLink } from "react-icons/lu";
 
-import './sidebarMainPage.scss'
+import "./sidebarMainPage.scss";
 
-const Sidebar = ({isSideExpand, setIsSideExpand, sidebarRef, mouseDownResizeHandler }) => {
-
-
+const Sidebar = ({
+    isSideExpand,
+    setIsSideExpand,
+    sidebarRef,
+    mouseDownResizeHandler,
+}) => {
     const [contentHidden, setContentHidden] = useState(false);
 
     const clickExpandSidebar = () => {
@@ -35,14 +38,12 @@ const Sidebar = ({isSideExpand, setIsSideExpand, sidebarRef, mouseDownResizeHand
         }
     };
 
-
     return (
-        <div 
+        <div
             ref={sidebarRef}
             onMouseDown={mouseDownResizeHandler}
             className={`sidebar ${isSideExpand ? "" : "_hidden"}`}
         >
-
             <div className="sidebar-resize" />
             <div className="sidebar-pets">
                 <div className="pets">
@@ -62,8 +63,7 @@ const Sidebar = ({isSideExpand, setIsSideExpand, sidebarRef, mouseDownResizeHand
                             <BsChevronBarRight size={30} className="" />
                         </div>
                     </div>
-                    <Pets contentHidden={contentHidden} />
-                    
+                    <Pets contentHidden={contentHidden} sidebarRef={sidebarRef} />
                 </div>
             </div>
 
@@ -85,9 +85,8 @@ const Sidebar = ({isSideExpand, setIsSideExpand, sidebarRef, mouseDownResizeHand
                     </div>
                 </button>
             }
-
         </div>
     );
 };
-
+    
 export default Sidebar;

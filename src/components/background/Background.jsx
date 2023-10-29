@@ -17,7 +17,7 @@ class GradientAnimation {
         this.circlesNum = 15;
         this.minRadius = 800;
         this.maxRadius = 800;
-        this.speed = .005;
+        this.speed = .008;
 
         (window.onresize = () => {
             this.setCanvasSize();
@@ -63,14 +63,22 @@ class GradientAnimation {
     }
 }
 
+const colorStorage = [
+    '255,102,102',
+    '102,102,204',
+    '102,204,204',
+    '153,204,153',
+    '204,204,51'
+]
+
 class Circle {
     constructor(w, h, minR, maxR) {
         this.x = Math.random() * w;
         this.y = Math.random() * h;
         this.angle = Math.random() * Math.PI * 2;
         this.radius = Math.random() * (maxR - minR) + minR;
-        this.firstColor = `hsla(${Math.random() * 360}, 100%, 50%, 1)`;
-        this.secondColor = `hsla(${Math.random() * 360}, 100%, 50%, 0)`;
+        this.firstColor = getCircleUnicleColorFirst()
+        this.secondColor = getCircleUnicleColorSecond()
     }
     draw(ctx, speed) {
         this.angle += speed;
@@ -86,6 +94,14 @@ class Circle {
         ctx.arc(x, y, this.radius, 0, Math.PI * 2);
         ctx.fill();
     }
+}
+
+
+const getCircleUnicleColorFirst = ()=> {
+    return `rgba(${colorStorage[Math.floor(colorStorage.length * Math.random())]}, 1)`
+}
+const getCircleUnicleColorSecond = ()=> {
+    return `rgba(${colorStorage[Math.floor(colorStorage.length * Math.random())]}, 0)`
 }
 class CircleUser {
     constructor(w, h, radius) {
@@ -121,3 +137,5 @@ window.onload = () => {
 }
 
 export default Background
+
+

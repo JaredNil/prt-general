@@ -1,87 +1,20 @@
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import uuid from 'react-uuid'
+
+import { ApplicationContext } from '../../store/context.ts'
 
 import {PiArrowLineDownRightBold} from 'react-icons/pi'
 
 import './pets.scss'
 
+import {projStorage} from '../../utils/projStorage.ts'
 
-
-
-const petsData = [
-    {
-        category: 'React',
-        items: [
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-        ]
-    },
-    {
-        category: 'React',
-        items: [
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-        ]
-    },
-    {
-        category: 'React',
-        items: [
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-            {
-                name: 'Проект облачного хранилища',
-                linkComponent: '/',
-                skills: ['TS', 'React', 'Redux', 'Express'],
-                links: {
-                    'GH': '/',
-                    'SYTE': '/'
-                }
-            },
-        ]
-    },
-]
 
 
 const Pets = ({contentHidden}) => {
+
+    const appState = useContext(ApplicationContext);
 
 
     return (
@@ -89,10 +22,11 @@ const Pets = ({contentHidden}) => {
             className={`pets__content ${contentHidden ? '_hide' : '' }`} 
         >
             {
-                petsData.map((category, index) => (
+                projStorage.map( category => (
                     <div className='pets__chapter' key={uuid()}>
                         <div className="category">
-                            {category.category}
+                            <div className="category-circle"/>
+                            <span>{category.category}</span>
                             <PiArrowLineDownRightBold size={20}/>
                         </div>
                         {
@@ -102,7 +36,7 @@ const Pets = ({contentHidden}) => {
 
                                     <div className="pet__title">{item.name}</div>
                                     <div className="pet__skills">
-                                        <div className="pet__skills-title">Технологии: </div>
+                                        <div className="pet__skills-title"></div>
                                         <div className="pet__skills-map">
                                             {item.skills.map((t, j, skills) => (
 

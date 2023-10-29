@@ -1,0 +1,35 @@
+@use "../../utils/var.scss" as var;
+
+.return{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 0 15px 0;
+    margin-bottom: 5px;
+
+    background-color: var.$gen;
+}
+
+.return__fish{
+    a, span{
+        color: var.$gen2;
+    }
+    .pieceOfFish{
+
+
+
+    }
+    .last_lnk{
+        color: var.$titlePetsCategory;
+    }
+}
+
+.return__back{
+    a{
+        font-size: 26px;
+        letter-spacing: 0.6px;
+    }
+}

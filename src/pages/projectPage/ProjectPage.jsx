@@ -1,20 +1,19 @@
 import Page from "./../../components/page/Page";
 
-import SidebarMainPage from "../../components/sidebarMainPage/SidebarMainPage";
-
+import Projects from "../../components/projects/Projects";
+import Return from "../../components/return/Return";
 
 
 const ProjectPage = () => {
 
-  return (
-    <Page>
-      <div className="project">
-        <div>
-          <SidebarMainPage />
-        </div>
-      </div>
-    </Page>
-  )
+    return (
+        <Page>
+            <div className="projectpage">
+                <Return />
+                <Projects />
+            </div>
+        </Page>
+    )
 
 }
 
